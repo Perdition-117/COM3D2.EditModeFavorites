@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <Reference Include="COM3D2.EditModeItemManager">
-      <HintPath>E:\COM3D2-dev\BepInEx\plugins\COM3D2.EditModeItemManager.dll</HintPath>
+      <HintPath>Libs\COM3D2.EditModeItemManager.dll</HintPath>
     </Reference>
   </ItemGroup>
 
