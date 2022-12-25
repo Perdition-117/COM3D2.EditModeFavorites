@@ -32,7 +32,6 @@ partial class EditModeFavorites {
 	[HarmonyPatch(typeof(PresetMgr), nameof(PresetMgr.ClickPreset))]
 	[HarmonyPrefix]
 	private static bool PreClickPreset(PresetMgr __instance) {
-
 		if (IsFavoriteModifierPressed) {
 			ToggleFavoritePreset(UIButton.current.name);
 			__instance.UpdatePresetList();

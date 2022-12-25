@@ -34,8 +34,8 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 	}
 
 	private void Awake() {
-		_configFavoriteSorting = Config.Bind("General", "SortFavoritesFirst", true, "Place favorites first instead of their default sorting position");
-		_configToggleFavoriteModifier = Config.Bind("General", "ToggleFavoriteModifier", ModifierKey.Control, "Modifier key used to toggle favorite status");
+		_configFavoriteSorting = Config.Bind("General", "SortFavoritesFirst", true, "Place favorites before other items instead of their default sorting position");
+		_configToggleFavoriteModifier = Config.Bind("General", "ToggleFavoriteModifier", ModifierKey.Control, "Modifier key used to toggle favorite state");
 
 		_configFavoriteSorting.SettingChanged += (o, e) => {
 			if (SceneEdit.Instance) {
@@ -101,10 +101,10 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 			if (x.m_boDelOnly != y.m_boDelOnly) {
 				return x.m_boDelOnly ? -1 : 1;
 			}
-			var aIsFavorite = IsFavoriteItem(x.m_strMenuFileName) || (SceneEdit.Instance.m_bUseGroup && HasFavoriteItems(x));
-			var bIsFavorite = IsFavoriteItem(y.m_strMenuFileName) || (SceneEdit.Instance.m_bUseGroup && HasFavoriteItems(y));
-			if (aIsFavorite != bIsFavorite) {
-				return aIsFavorite ? -1 : 1;
+			var xIsFavorite = IsFavoriteItem(x.m_strMenuFileName) || (SceneEdit.Instance.m_bUseGroup && HasFavoriteItems(x));
+			var yIsFavorite = IsFavoriteItem(y.m_strMenuFileName) || (SceneEdit.Instance.m_bUseGroup && HasFavoriteItems(y));
+			if (xIsFavorite != yIsFavorite) {
+				return xIsFavorite ? -1 : 1;
 			} else if (x.m_fPriority != y.m_fPriority) {
 				return (int)x.m_fPriority - (int)y.m_fPriority;
 			} else {
@@ -144,7 +144,7 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 			if (!item.m_boDelOnly) {
 				ToggleFavorite(item.m_strMenuFileName);
 				item.m_ParentPartsType.SortItem();
-				if (__instance.m_Panel_GroupSet.goMain.activeSelf && __instance.m_listBtnGroupMember.Count > 0) {// set item
+				if (__instance.m_Panel_GroupSet.goMain.activeSelf && __instance.m_listBtnGroupMember.Count > 0) {
 					_clickCallbackItem = __instance.m_listBtnGroupMember[0].mi;
 				}
 				__instance.UpdatePanel_MenuItem(item.m_ParentPartsType);
