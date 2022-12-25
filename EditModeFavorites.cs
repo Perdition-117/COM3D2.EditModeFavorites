@@ -22,9 +22,7 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 	private static bool _doSort = false;
 	private static SceneEdit.SMenuItem _clickCallbackItem;
 
-	private static bool SortFavoritesFirst {
-		get => _configFavoriteSorting.Value;
-	}
+	private static bool SortFavoritesFirst => _configFavoriteSorting.Value;
 
 	private static bool IsFavoriteModifierPressed {
 		get => _configToggleFavoriteModifier.Value switch {
@@ -164,6 +162,18 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 	private static void UpdatePanel_GroupSet(ref SceneEdit.SMenuItem f_miSelected) {
 		if (_clickCallbackItem != null) {
 			f_miSelected = _clickCallbackItem;
+		}
+	}
+
+	// prevent erratic scroll behavior in set group frames (?)
+	[HarmonyPatch(typeof(SceneEdit), nameof(SceneEdit.UpdatePanel_GroupSet))]
+	[HarmonyPostfix]
+	private static void PostUpdatePanel_GroupSet(SceneEdit __instance, SceneEdit.SMenuItem f_miSelected) {
+		if (f_miSelected == null || f_miSelected.m_mpn == MPN.set_body || !f_miSelected.m_bGroupLeader || !__instance.m_bUseGroup) {
+			return;
+		}
+		if (f_miSelected.m_strCateName.StartsWith("set_")) {
+			__instance.m_Panel_GroupSet.ResetScrollPos(0f);
 		}
 	}
 }
