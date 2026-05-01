@@ -1,7 +1,7 @@
 ﻿using System;
 using BepInEx;
 using BepInEx.Configuration;
-using COM3D2.EditModeItemManager;
+using EditModeItemManager;
 using HarmonyLib;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ enum ModifierKey {
 }
 
 [BepInPlugin("net.perdition.com3d2.editmodefavorites", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-[BepInDependency("net.perdition.com3d2.editmodeitemmanager")]
+[BepInDependency("net.perdition.com3d2.editmodeitemmanager", "1.1.0")]
 public partial class EditModeFavorites : BaseUnityPlugin {
 	private static ConfigEntry<bool> _configFavoriteSorting;
 	private static ConfigEntry<ModifierKey> _configToggleFavoriteModifier;

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-using COM3D2.EditModeItemManager;
+using EditModeItemManager;
 using HarmonyLib;
 
 namespace EditModeFavorites;

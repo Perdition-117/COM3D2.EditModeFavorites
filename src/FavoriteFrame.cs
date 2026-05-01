@@ -1,4 +1,4 @@
-﻿using COM3D2.EditModeItemManager;
+using EditModeItemManager;
 using UnityEngine;
 
 namespace EditModeFavorites;
