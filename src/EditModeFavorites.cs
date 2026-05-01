@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BepInEx;
 using BepInEx.Configuration;
 using EditModeItemManager;
@@ -140,7 +140,7 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 		var buttonEdit = UIButton.current.GetComponentInChildren<ButtonEdit>();
 		var item = buttonEdit.m_MenuItem;
 
-		if (item != null && !item.m_bColor && IsFavoriteModifierPressed) {
+		if (item != null && !item.m_bColor && IsFavoriteModifierPressed && Input.GetMouseButtonUp(0)) {
 			if (!item.m_boDelOnly) {
 				ToggleFavorite(item.m_strMenuFileName);
 				item.m_ParentPartsType.SortItem();
