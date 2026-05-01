@@ -1,7 +1,7 @@
 ﻿using COM3D2.EditModeItemManager;
 using UnityEngine;
 
-namespace COM3D2.EditModeFavorites;
+namespace EditModeFavorites;
 
 internal class FavoriteFrame : IOverlay {
 	private static readonly Vector3 _largeButtonOffset = new(-20, -20);

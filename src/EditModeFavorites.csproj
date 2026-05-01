@@ -4,7 +4,6 @@
     <TargetFramework>net35</TargetFramework>
     <LangVersion>10</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Product>EditModeFavorites</Product>
     <Version>1.0.0</Version>
     <Authors>Perdition</Authors>
     <PackageProjectUrl>https://github.com/Perdition-117/COM3D2.EditModeFavorites</PackageProjectUrl>

@@ -3,7 +3,7 @@ using System.Linq;
 using COM3D2.EditModeItemManager;
 using HarmonyLib;
 
-namespace COM3D2.EditModeFavorites;
+namespace EditModeFavorites;
 
 partial class EditModeFavorites {
 	public static void ToggleFavoritePreset(string fileName) {

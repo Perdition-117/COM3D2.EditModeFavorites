@@ -5,7 +5,7 @@ using COM3D2.EditModeItemManager;
 using HarmonyLib;
 using UnityEngine;
 
-namespace COM3D2.EditModeFavorites;
+namespace EditModeFavorites;
 
 enum ModifierKey {
 	Control,
