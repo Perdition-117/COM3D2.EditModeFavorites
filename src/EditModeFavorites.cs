@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using BepInEx;
 using BepInEx.Configuration;
 using EditModeItemManager;
@@ -16,6 +17,8 @@ enum ModifierKey {
 [BepInPlugin("net.perdition.com3d2.editmodefavorites", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
 [BepInDependency("net.perdition.com3d2.editmodeitemmanager", "1.1.0")]
 public partial class EditModeFavorites : BaseUnityPlugin {
+	private static readonly MPN SetBody = (MPN)Enum.Parse(typeof(MPN), "set_body");
+
 	private static ConfigEntry<bool> _configFavoriteSorting;
 	private static ConfigEntry<ModifierKey> _configToggleFavoriteModifier;
 
@@ -169,10 +172,10 @@ public partial class EditModeFavorites : BaseUnityPlugin {
 	[HarmonyPatch(typeof(SceneEdit), nameof(SceneEdit.UpdatePanel_GroupSet))]
 	[HarmonyPostfix]
 	private static void PostUpdatePanel_GroupSet(SceneEdit __instance, SceneEdit.SMenuItem f_miSelected) {
-		if (f_miSelected == null || f_miSelected.m_mpn == MPN.set_body || !f_miSelected.m_bGroupLeader || !__instance.m_bUseGroup) {
+		if (f_miSelected == null || f_miSelected.m_mpn == SetBody || !f_miSelected.m_bGroupLeader || !__instance.m_bUseGroup) {
 			return;
 		}
-		if (f_miSelected.m_strCateName.StartsWith("set_")) {
+		if (SceneEdit.m_isSetCategory.Contains(f_miSelected.m_mpn)) {
 			__instance.m_Panel_GroupSet.ResetScrollPos(0f);
 		}
 	}
