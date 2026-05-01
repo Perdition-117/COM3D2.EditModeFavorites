@@ -1,17 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net35</TargetFramework>
-		<LangVersion>10</LangVersion>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Perdition</Authors>
 		<PackageProjectUrl>https://github.com/Perdition-117/COM3D2.EditModeFavorites</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Perdition-117/COM3D2.EditModeFavorites.git</RepositoryUrl>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<DebugType>full</DebugType>
+	<PropertyGroup>
+		<TargetFramework>net35</TargetFramework>
+		<LangVersion>10</LangVersion>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<ItemGroup>

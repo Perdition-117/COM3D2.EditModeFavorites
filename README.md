@@ -17,4 +17,4 @@ Settings are found in `BepInEx\config\net.perdition.com3d2.editmodefavorites.cfg
 
 ## Installation
 
-Download the latest version from [the release page](../../releases/latest). Extract the archive contents into `BepInEx\plugins`.
+Get the latest version from [the release page](../../releases/latest). Extract the archive contents into the root of your game directory.
